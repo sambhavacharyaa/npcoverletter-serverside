@@ -1,0 +1,1558 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}.np Domain Cover Letter Generator - Create Free Mercantile Ready Letter{% endblock %}
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">{% endblock %}
+
+{% block main %}
+<section class="bg-white lg:min-h-screen lg:flex lg:items-center">
+
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+
+
+            <!-- Content -->
+            <div class="max-w-xl text-left">
+
+
+                <!-- Badges -->
+                <div class="flex flex-wrap gap-2">
+
+                    <span class="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-emerald-700">
+
+                        <svg
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="mr-1.5 h-4 w-4">
+
+                            <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+
+                        </svg>
+
+                        <span class="text-sm font-medium">
+                            Free
+                        </span>
+
+                    </span>
+
+
+
+                    <span class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-amber-700">
+
+                        <svg
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="mr-1.5 h-4 w-4">
+
+                            <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12"/>
+
+                        </svg>
+
+                        <span class="text-sm font-medium">
+                            Instant PDF
+                        </span>
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- Heading -->
+                <h1 class="mt-6 text-4xl font-bold leading-tight text-gray-900 sm:text-5xl lg:text-6xl">
+
+                     .np Domain
+
+                    <span class="text-blue-600">
+                        Cover Letter
+                    </span>
+
+                    Generator
+
+                </h1>
+
+
+
+                <!-- Description -->
+                <p class="mt-5 text-base leading-7 text-gray-700 sm:text-lg">
+
+                    Create a Mercantile-compliant cover letter for your .com.np domain registration in minutes. No login required, no data stored — just fill in your details, preview, and download your PDF.
+
+                </p>
+
+
+
+                <!-- Buttons -->
+                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+
+                    <a href="#generator"
+                       class="rounded-lg bg-blue-600 px-6 py-3 text-center font-medium text-white shadow-sm transition hover:bg-blue-700">
+
+                        Get Started
+
+                    </a>
+
+
+                    <a href="#how-it-works"
+                       class="rounded-lg border border-gray-200 px-6 py-3 text-center font-medium text-gray-700 transition hover:bg-gray-50">
+
+                        Learn More
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Image -->
+            <div class="flex justify-center">
+
+                <img
+                    alt="Generate .com.np cover letter"
+                    src="{% static 'img/hero.png' %}"
+                    class="w-64 object-contain sm:w-80 md:w-96 lg:w-full max-w-lg"
+                />
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<section class="bg-slate-50 py-16" id="generator">
+
+    <div class="max-w-7xl mx-auto px-5">
+
+        <div class="text-center mb-10">
+
+            <h2 class="text-3xl font-bold text-slate-900">
+                Generate Your .np Domain Cover Letter
+            </h2>
+
+            <p class="mt-3 text-slate-600">
+                Fill in your details and download a ready-to-submit PDF.
+            </p>
+
+        </div>
+
+
+        <!-- Toggle -->
+<div class="flex justify-center mb-8">
+
+    <button id="personal-btn"
+            class="toggle-btn active cursor-pointer px-6 py-3 rounded-l-lg font-medium transition duration-200">
+        Personal Domain
+    </button>
+
+
+    <button id="business-btn"
+            class="toggle-btn cursor-pointer px-6 py-3 rounded-r-lg font-medium transition duration-200">
+        Business Domain
+    </button>
+
+</div>
+
+
+
+        <div class="grid lg:grid-cols-2 gap-8">
+
+
+            <!-- Form Card -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+
+
+                <!-- Personal Form -->
+                <div id="personal-form">
+
+                    <h3 class="text-xl font-semibold text-slate-900 mb-6">
+                        Personal Domain Details
+                    </h3>
+
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="space-y-5">
+
+                            {% for field in personal_form %}
+
+                                <div>
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    {{ field.errors }}
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+
+
+                        <button type="submit"
+                                name="personal_submit"
+                                class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg py-3">
+
+                            Generate Personal Cover Letter
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+
+
+                <!-- Business Form -->
+                <div id="business-form" class="hidden">
+
+                    <h3 class="text-xl font-semibold text-slate-900 mb-6">
+                        Business Domain Details
+                    </h3>
+
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="space-y-5">
+
+                            {% for field in business_form %}
+
+                                <div>
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    {{ field.errors }}
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+
+
+                        <button type="submit"
+                                name="business_submit"
+                                class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg py-3">
+
+                            Generate Business Cover Letter
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <!-- Preview Card -->
+           <!-- Preview Card -->
+<div class="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 shadow-sm">
+
+
+    <!-- Header -->
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
+
+        <h3 class="text-xl font-semibold text-slate-900">
+            Preview
+        </h3>
+
+
+        {% if letter %}
+
+        <a href="{% url 'download_pdf' %}"
+           class="w-full sm:w-auto text-center inline-flex justify-center items-center rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 transition">
+
+            Download PDF
+
+        </a>
+        <form method="POST"
+      action="{% url 'send_pdf_email' %}"
+      onsubmit="return confirmSendEmail();">
+
+    {% csrf_token %}
+
+    <button type="submit"
+            class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
+        Send Email
+    </button>
+
+</form>
+
+        {% endif %}
+
+    </div>
+
+
+
+
+    <!-- Preview Area -->
+    <div class="rounded-lg bg-gray-100 p-3 sm:p-6 overflow-x-auto">
+
+
+        <!-- A4 Paper -->
+        <div class="
+            mx-auto
+            w-full
+            max-w-[794px]
+            aspect-[794/1123]
+            bg-white
+            shadow-xl
+            border
+            border-gray-200
+            p-5
+            sm:p-8
+            md:p-12
+        ">
+
+
+            <!-- Letterhead -->
+        <!-- Letterhead -->
+<div class="text-center border-b border-gray-200 pb-6 mb-8">
+
+    <h1 class="text-2xl sm:text-3xl font-bold text-slate-900">
+        Request for .np Domain Registration
+    </h1>
+
+</div>
+
+
+            <!-- Letter -->
+            {% if letter %}
+
+            <div class="
+                text-sm
+                sm:text-base
+                text-slate-800
+                leading-6
+                sm:leading-8
+                break-words
+            ">
+
+                {{ letter|safe }}
+
+            </div>
+
+
+            {% else %}
+
+
+            <div class="flex h-full items-center justify-center text-center text-slate-400">
+
+
+                <div>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         class="mx-auto mb-4 h-12 w-12 sm:h-16 sm:w-16"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="1.5"
+                              d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z"/>
+
+
+                    </svg>
+
+
+                    <p class="text-sm sm:text-lg font-medium">
+
+                        Your cover letter will appear here
+
+                    </p>
+
+
+                    <p class="mt-2 text-xs sm:text-sm">
+
+                        Fill out the form and click generate.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</section>
+
+<section class="bg-white py-20" id="how-it-works">
+
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+
+        <!-- Header -->
+        <div class="mx-auto max-w-3xl text-center">
+
+            <span class="text-sm font-medium text-blue-600">
+                Simple Process
+            </span>
+
+            <h2 class="mt-3 text-3xl font-bold text-slate-900 sm:text-4xl">
+                From Details to Download in Minutes
+            </h2>
+
+            <p class="mt-4 text-slate-600">
+                Create a properly formatted .np domain cover letter without worrying about formatting.
+            </p>
+
+        </div>
+
+
+
+        <!-- Steps -->
+        <div class="mt-16 space-y-20">
+
+
+            <!-- Step 1 -->
+            <div class="grid items-center gap-10 lg:grid-cols-2">
+
+                <div>
+
+                    <span class="text-sm font-bold text-blue-600">
+                        STEP 01
+                    </span>
+
+                    <h3 class="mt-3 text-2xl font-semibold text-slate-900">
+                        Select Domain Type
+                    </h3>
+
+                    <p class="mt-3 text-slate-600">
+                        Choose whether you are registering a personal domain or a business domain.
+                    </p>
+
+                </div>
+
+
+                <!-- Visual -->
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+
+                    <div class="rounded-xl bg-white p-5 shadow">
+
+                        <p class="text-sm text-slate-500">
+                            Select Application Type
+                        </p>
+
+
+                        <div class="mt-4 flex gap-3">
+
+                            <div class="rounded-lg bg-blue-100 px-5 py-3 text-sm font-medium text-blue-700">
+                                Personal
+                            </div>
+
+
+                            <div class="rounded-lg bg-slate-100 px-5 py-3 text-sm font-medium text-slate-600">
+                                Business
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <!-- Step 2 -->
+            <div class="grid items-center gap-10 lg:grid-cols-2">
+
+
+                <!-- Visual -->
+                <div class="order-2 lg:order-1 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+
+                    <div class="rounded-xl bg-white p-5 shadow space-y-3">
+
+                        <div class="h-3 w-32 rounded bg-slate-200"></div>
+
+                        <div class="h-10 rounded-lg border border-slate-200"></div>
+
+                        <div class="h-10 rounded-lg border border-slate-200"></div>
+
+                        <div class="h-10 rounded-lg border border-slate-200"></div>
+
+                        <div class="mt-4 h-10 rounded-lg bg-blue-600"></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="order-1 lg:order-2">
+
+                    <span class="text-sm font-bold text-green-600">
+                        STEP 02
+                    </span>
+
+
+                    <h3 class="mt-3 text-2xl font-semibold text-slate-900">
+                        Enter Your Information
+                    </h3>
+
+
+                    <p class="mt-3 text-slate-600">
+                        Add your personal details, company information, domain name and nameservers.
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+            <!-- Step 3 -->
+            <div class="grid items-center gap-10 lg:grid-cols-2">
+
+
+                <div>
+
+                    <span class="text-sm font-bold text-purple-600">
+                        STEP 03
+                    </span>
+
+
+                    <h3 class="mt-3 text-2xl font-semibold text-slate-900">
+                        Preview Your Letter
+                    </h3>
+
+
+                    <p class="mt-3 text-slate-600">
+                        Check your generated cover letter before downloading it as a PDF.
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- Visual -->
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+
+                    <div class="mx-auto max-w-xs rounded-lg bg-white p-6 shadow-lg">
+
+
+                        <div class="border-b pb-3 text-center">
+
+                            <p class="font-bold text-slate-900">
+                                NP Cover Letter
+                            </p>
+
+                            <p class="text-xs text-slate-500">
+                                .com.np Registration
+                            </p>
+
+                        </div>
+
+
+                        <div class="mt-5 space-y-3">
+
+                            <div class="h-2 rounded bg-slate-200"></div>
+                            <div class="h-2 rounded bg-slate-200"></div>
+                            <div class="h-2 w-3/4 rounded bg-slate-200"></div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+            <!-- Step 4 -->
+            <div class="grid items-center gap-10 lg:grid-cols-2">
+
+
+
+                <!-- Visual -->
+                <div class="order-2 lg:order-1 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+
+
+                    <div class="rounded-xl bg-white p-8 text-center shadow">
+
+
+                        <svg class="mx-auto h-12 w-12 text-green-600"
+                             fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="1.5"
+                                  d="M12 10v6m0 0l-3-3m3 3l3-3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H9l-4 4v10a2 2 0 002 2z"/>
+
+                        </svg>
+
+
+                        <h4 class="mt-3 font-semibold text-slate-900">
+                            PDF Ready
+                        </h4>
+
+
+                        <button class="mt-4 rounded-lg bg-green-600 px-5 py-2 text-sm font-medium text-white">
+                            Download PDF
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="order-1 lg:order-2">
+
+
+                    <span class="text-sm font-bold text-orange-600">
+                        STEP 04
+                    </span>
+
+
+                    <h3 class="mt-3 text-2xl font-semibold text-slate-900">
+                        Download & Submit
+                    </h3>
+
+
+                    <p class="mt-3 text-slate-600">
+                        Download the PDF, sign it, attach required documents and submit your application to Mercantile.
+                    </p>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+<section class="py-10 bg-slate-50">
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Section Heading -->
+        <div class="mx-auto max-w-2xl text-center">
+
+            <span class="inline-block rounded-full bg-blue-100 px-4 py-1 text-sm font-medium text-blue-700">
+                Why Choose Us
+            </span>
+
+            <h2 class="mt-4 text-4xl font-bold tracking-tight text-slate-900">
+                Everything You Need for .np Domain Registration
+            </h2>
+
+            <p class="mt-5 text-lg text-slate-600">
+                Generate a professional, registrar-ready cover letter in seconds — no formatting guesswork, no wondering what Mercantile expects
+            </p>
+
+        </div>
+
+
+        <!-- Features -->
+        <div class="mt-14 grid gap-8 md:grid-cols-3">
+
+
+            <!-- Feature 1 -->
+            <div class="rounded-2xl border border-blue-100 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+
+                <div class="inline-flex rounded-xl bg-blue-100 p-4 text-blue-600">
+
+                    <!-- Lightning Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="1.8"
+                         stroke="currentColor"
+                         class="h-7 w-7">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"/>
+
+                    </svg>
+
+                </div>
+
+                <h3 class="mt-6 text-xl font-semibold text-slate-900">
+                    Instant Generation
+                </h3>
+
+                <p class="mt-3 text-slate-600 leading-7">
+Get a correctly formatted .np cover letter in seconds, not hours.
+                </p>
+
+            </div>
+
+
+
+            <!-- Feature 2 -->
+            <div class="rounded-2xl border border-green-100 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+
+                <div class="inline-flex rounded-xl bg-green-100 p-4 text-green-600">
+
+                    <!-- Shield Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="1.8"
+                         stroke="currentColor"
+                         class="h-7 w-7">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/>
+
+                    </svg>
+
+                </div>
+
+                <h3 class="mt-6 text-xl font-semibold text-slate-900">
+                    Registrar Ready
+                </h3>
+
+                <p class="mt-3 text-slate-600 leading-7">
+Every letter follows the format Mercantile expects — no rejections over formatting.
+                </p>
+
+            </div>
+
+
+
+            <!-- Feature 3 -->
+            <div class="rounded-2xl border border-purple-100 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+
+                <div class="inline-flex rounded-xl bg-purple-100 p-4 text-purple-600">
+
+                    <!-- Settings Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="1.8"
+                         stroke="currentColor"
+                         class="h-7 w-7">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M6 13.5V3.75m0 9.75a1.5 1.5 0 1 1 0 3m0-3v6m12-6V3.75m0 9.75a1.5 1.5 0 1 1 0 3m0-3v6m-6-15v6m0 0a1.5 1.5 0 1 1 0 3m0-3v9"/>
+
+                    </svg>
+
+                </div>
+
+                <h3 class="mt-6 text-xl font-semibold text-slate-900">
+                    Personal & Business
+                </h3>
+
+                <p class="mt-3 text-slate-600 leading-7">
+Switch between personal and business applications with a single click.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="bg-white py-16">
+
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center">
+
+            <span class="inline-flex rounded-full bg-amber-100 px-4 py-1 text-sm font-medium text-amber-700">
+                Before You Start
+            </span>
+
+            <h2 class="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
+                What You'll Need
+            </h2>
+
+            <p class="mt-4 mx-auto max-w-2xl text-slate-600">
+               Have this ready before you start — it takes less than a minute once you do.
+
+            </p>
+
+        </div>
+
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-2">
+
+
+            <!-- Personal -->
+            <div class="rounded-2xl border border-blue-100 bg-blue-50 p-8">
+
+                <div class="flex items-center gap-3">
+
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 text-white">
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke-width="1.8"
+         stroke="currentColor"
+         class="h-6 w-6">
+
+        <path stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a7.5 7.5 0 0 1 15 0"/>
+
+    </svg>
+
+</div>
+
+                    <div>
+
+                        <h3 class="text-xl font-semibold text-slate-900">
+                            Personal Domain
+                        </h3>
+
+                        <p class="text-sm text-slate-600">
+                            Required documents & information
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <ul class="mt-8 space-y-4">
+
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 text-green-600">✓</span>
+                        <span>Full Name</span>
+                    </li>
+
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 text-green-600">✓</span>
+                        <span>Residential Address</span>
+                    </li>
+
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 text-green-600">✓</span>
+                        <span>Citizenship Number or Passport Number</span>
+                    </li>
+
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 text-green-600">✓</span>
+                        <span>Desired <strong>.np</strong> Domain Name</span>
+                    </li>
+
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 text-green-600">✓</span>
+                        <span>Primary & Secondary Name Servers (NS1 & NS2)</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- Business -->
+            <div class="rounded-2xl border border-green-100 bg-green-50 p-8">
+
+                <div class="flex items-center gap-3">
+
+         <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-green-600 text-white">
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke-width="1.8"
+         stroke="currentColor"
+         class="h-6 w-6">
+
+        <path stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 21h16.5M5.25 21V7.5A1.5 1.5 0 0 1 6.75 6h10.5a1.5 1.5 0 0 1 1.5 1.5V21M9 9h1.5m3 0H15M9 12h1.5m3 0H15M9 15h1.5m3 0H15"/>
+
+    </svg>
+
+</div>
+
+                    <div>
+
+                        <h3 class="text-xl font-semibold text-slate-900">
+                            Business Domain
+                        </h3>
+
+                        <p class="text-sm text-slate-600">
+                            Required documents & information
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <ul class="mt-8 space-y-4">
+
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 text-green-600">✓</span>
+                        <span>Company Registration Certificate</span>
+                    </li>
+
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 text-green-600">✓</span>
+                        <span>PAN or VAT Registration Number</span>
+                    </li>
+
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 text-green-600">✓</span>
+                        <span>Authorized Representative Details</span>
+                    </li>
+
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 text-green-600">✓</span>
+                        <span>Desired <strong>.com.np</strong> Domain Name</span>
+                    </li>
+
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 text-green-600">✓</span>
+                        <span>Primary & Secondary Name Servers (NS1 & NS2)</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- Notice -->
+        <div class="mt-10 rounded-xl border border-amber-200 bg-amber-50 p-5">
+
+            <p class="text-center text-sm text-amber-800">
+
+                <strong>Tip:</strong> Having these ready means you'll finish your cover letter in under a minute, with no interruptions.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="bg-slate-50 py-16" id="extensions">
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Heading -->
+        <div class="mx-auto max-w-3xl text-center">
+
+            <span class="inline-flex rounded-full bg-blue-100 px-4 py-1 text-sm font-medium text-blue-700">
+                .NP Domain Guide
+            </span>
+
+            <h2 class="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
+                Available .NP Domain Extensions
+            </h2>
+
+            <p class="mt-4 text-lg text-slate-600">
+                Not sure which extension to register? Here's a quick overview of the official
+                .NP domain categories and who they're intended for.
+            </p>
+
+        </div>
+
+
+        <!-- Table -->
+        <div class="mt-12 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+
+            <div class="overflow-x-auto">
+
+                <table class="min-w-full">
+
+                    <thead class="bg-slate-100">
+
+                        <tr>
+
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-slate-900">
+                                Extension
+                            </th>
+
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-slate-900">
+                                Intended For
+                            </th>
+
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-slate-900">
+                                Requirement
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody class="divide-y divide-slate-200">
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.com.np</td>
+                            <td class="px-6 py-5 text-slate-700">Businesses & Individuals</td>
+                            <td class="px-6 py-5 text-slate-600">Citizenship or Company Registration</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.org.np</td>
+                            <td class="px-6 py-5 text-slate-700">NGOs & Non-profit Organizations</td>
+                            <td class="px-6 py-5 text-slate-600">Organization Registration Certificate</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.net.np</td>
+                            <td class="px-6 py-5 text-slate-700">Internet & Technology Companies</td>
+                            <td class="px-6 py-5 text-slate-600">Company Registration Certificate</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.edu.np</td>
+                            <td class="px-6 py-5 text-slate-700">Schools, Colleges & Universities</td>
+                            <td class="px-6 py-5 text-slate-600">Educational Institution Registration</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.name.np</td>
+                            <td class="px-6 py-5 text-slate-700">Personal Websites</td>
+                            <td class="px-6 py-5 text-slate-600">Government-issued Identification</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.biz.np</td>
+                            <td class="px-6 py-5 text-slate-700">Businesses</td>
+                            <td class="px-6 py-5 text-slate-600">Company Registration Certificate</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.pro.np</td>
+                            <td class="px-6 py-5 text-slate-700">Licensed Professionals</td>
+                            <td class="px-6 py-5 text-slate-600">Professional License or Registration</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.coop.np</td>
+                            <td class="px-6 py-5 text-slate-700">Cooperative Organizations</td>
+                            <td class="px-6 py-5 text-slate-600">Cooperative Registration Certificate</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.travel.np</td>
+                            <td class="px-6 py-5 text-slate-700">Travel & Tourism Businesses</td>
+                            <td class="px-6 py-5 text-slate-600">Company Registration Certificate</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.asia.np</td>
+                            <td class="px-6 py-5 text-slate-700">Asia-Pacific Businesses</td>
+                            <td class="px-6 py-5 text-slate-600">Company Registration Certificate</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.gov.np</td>
+                            <td class="px-6 py-5 text-slate-700">Government Agencies</td>
+                            <td class="px-6 py-5 text-slate-600">Issued through NITC</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="px-6 py-5 font-semibold text-blue-600">.mil.np</td>
+                            <td class="px-6 py-5 text-slate-700">Military Organizations</td>
+                            <td class="px-6 py-5 text-slate-600">Government Authorization</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-5">
+
+            <p class="text-sm text-blue-900">
+
+                <strong>Most people should choose <span class="text-blue-600">.com.np</span>.</strong>
+                It is the most widely used extension in Nepal and is suitable for individuals,
+                freelancers, startups, and registered businesses.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="bg-white py-16 sm:py-20" id="faq">
+
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
+
+        <!-- Heading -->
+        <div class="mx-auto max-w-3xl text-center">
+
+            <span class="text-sm font-medium text-blue-600">
+                FAQ
+            </span>
+
+
+            <h2 class="mt-3 text-3xl font-bold text-slate-900 sm:text-4xl">
+                Frequently Asked Questions
+            </h2>
+
+
+            <p class="mt-4 text-sm sm:text-base text-slate-600">
+                Everything you need to know before generating your .np domain cover letter.
+            </p>
+
+        </div>
+
+
+
+
+        <!-- FAQ -->
+        <div class="mt-10 sm:mt-12 divide-y divide-slate-200 border-y border-slate-200">
+
+
+            <details class="group py-5 sm:py-6">
+
+
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base sm:text-lg font-semibold text-slate-900">
+
+
+                    <span class="leading-7">
+                        Is .com.np domain registration really free?
+                    </span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="2"
+                         stroke="currentColor"
+                         class="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-180">
+
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+
+                    </svg>
+
+
+                </summary>
+
+
+
+                <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
+                    Yes. Mercantile Communication Pvt. Ltd. registers .np domains free of cost, on a first-come-first-served basis. You only pay if you use a paid registrar/agency for handling the process, or for hosting
+
+            </details>
+
+
+
+
+
+            <details class="group py-5 sm:py-6">
+
+
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base sm:text-lg font-semibold text-slate-900">
+
+                    <span class="leading-7">
+                        How long does .np domain approval take?
+                    </span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="2"
+                         stroke="currentColor"
+                         class="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-180">
+
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+
+                    </svg>
+
+                </summary>
+
+
+
+                <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
+
+                    Typically 3–5 business days after you submit your cover letter and documents, though it can be faster depending on Mercantile's review queue.
+
+                </p>
+
+
+            </details>
+
+
+
+
+
+            <details class="group py-5 sm:py-6">
+
+
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base sm:text-lg font-semibold text-slate-900">
+
+                    <span class="leading-7">
+What documents do I need for a .com.np cover letter?                    </span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="2"
+                         stroke="currentColor"
+                         class="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-180">
+
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+
+                    </svg>
+
+                </summary>
+
+
+
+                <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
+
+                   For personal registration: citizenship or passport number, full name, and address. For business registration: company registration certificate, PAN/VAT number, and authorized representative details. Both need your desired domain name and two nameservers.
+
+                </p>
+
+
+            </details>
+
+
+
+
+
+            <details class="group py-5 sm:py-6">
+
+
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base sm:text-lg font-semibold text-slate-900">
+
+
+                    <span class="leading-7">
+Can foreigners register a .com.np domain?                    </span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="2"
+                         stroke="currentColor"
+                         class="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-180">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+
+                    </svg>
+
+                </summary>
+
+
+                <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
+
+                    Foreign individuals can register with a Non-Resident Nepali (NRN) ID card or valid residence visa. Foreign companies need an official presence in Nepal — as a joint venture, partner, agent, or licensee.
+
+                </p>
+
+
+            </details>
+
+
+
+
+
+            <details class="group py-5 sm:py-6">
+
+
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base sm:text-lg font-semibold text-slate-900">
+
+
+                    <span class="leading-7">
+Does my domain name have to match my business or personal name?                    </span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="2"
+                         stroke="currentColor"
+                         class="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-180">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+
+                    </svg>
+
+                </summary>
+
+
+
+                <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
+
+                    Yes — the requested domain name must exactly match, be an abbreviation or acronym of, or be closely connected to the applicant's name or trademark. Mercantile can reject requests where the connection isn't clear. 
+
+                </p>
+
+
+            </details>
+
+            <details class="group py-5 sm:py-6">
+
+
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base sm:text-lg font-semibold text-slate-900">
+
+
+                    <span class="leading-7">
+What's the difference between .com.np, .org.np, and .name.np?                    </span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="2"
+                         stroke="currentColor"
+                         class="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-180">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+
+                    </svg>
+
+                </summary>
+
+
+
+                <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
+
+.com.np is for businesses and general use, .org.np is for non-profits and organizations, and .name.np is for individuals registering a personal domain under their own name.
+                </p>
+
+
+            </details>
+            <details class="group py-5 sm:py-6">
+
+
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base sm:text-lg font-semibold text-slate-900">
+
+
+                    <span class="leading-7">
+ Do I need a nameserver before I register my .com.np domain?                    </span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="2"
+                         stroke="currentColor"
+                         class="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-180">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+
+                    </svg>
+
+                </summary>
+
+
+
+                <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
+
+Yes — you need to provide primary and secondary nameservers (NS1 and NS2) as part of your application. These usually come from your hosting provider.                </p>
+
+
+            </details>
+            <details class="group py-5 sm:py-6">
+
+
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base sm:text-lg font-semibold text-slate-900">
+
+
+                    <span class="leading-7">
+Is this cover letter generator free to use?                   </span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="2"
+                         stroke="currentColor"
+                         class="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-180">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+
+                    </svg>
+
+                </summary>
+
+
+
+                <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
+
+Yes, it's completely free with no signup required.
+
+
+            </details>
+            <details class="group py-5 sm:py-6">
+
+
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base sm:text-lg font-semibold text-slate-900">
+
+
+                    <span class="leading-7">
+ Is my personal information stored when I use this tool?                 </span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="2"
+                         stroke="currentColor"
+                         class="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-180">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+
+                    </svg>
+
+                </summary>
+
+
+
+                <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
+
+No — your information is used only to generate your PDF and isn't stored on our servers.
+
+
+            </details>
+            <details class="group py-5 sm:py-6">
+
+
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-4 text-base sm:text-lg font-semibold text-slate-900">
+
+
+                    <span class="leading-7">
+What format does Mercantile accept for the cover letter?                </span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke-width="2"
+                         stroke="currentColor"
+                         class="mt-1 h-5 w-5 shrink-0 transition duration-300 group-open:rotate-180">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+
+                    </svg>
+
+                </summary>
+
+
+
+                <p class="mt-4 text-sm sm:text-base leading-7 text-slate-600">
+
+A formal letter addressed to the Hostmaster at Mercantile Communication Pvt. Ltd., including applicant details, the requested domain, nameservers, and a signature — this tool generates that exact format automatically.
+
+            </details>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+{% block js %}<script src="{% static 'js/home.js' %}"></script>{% endblock %}
+
+{% endblock %}

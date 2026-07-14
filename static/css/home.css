@@ -1,0 +1,54 @@
+.letter-preview {
+    margin-top: 40px;
+}
+
+.letter-paper {
+    background: white;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 50px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+    font-family: "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #222;
+}
+
+.letter-paper p {
+    margin-bottom: 18px;
+}
+
+.letter-paper .domain-box {
+    border: 1px solid #333;
+    padding: 15px;
+    margin: 25px 0;
+    border-radius: 5px;
+}
+
+.letter-paper .domain-box p {
+    margin: 5px 0;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+.toggle-btn {
+    background-color: #e5e7eb;
+    color: #334155;
+}
+
+.toggle-btn.active {
+    background-color: #2563eb;
+    color: white;
+}
+html {
+    scroll-behavior: smooth;
+}
