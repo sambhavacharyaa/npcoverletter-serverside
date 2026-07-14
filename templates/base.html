@@ -154,159 +154,103 @@
 
     <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
 
-        <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div class="grid lg:grid-cols-[1.6fr_1fr] gap-20">
 
-            <!-- Left -->
-            <div>
+    <!-- LEFT -->
+    <div>
 
-                <a href="/" class="inline-block">
-                    <h2 class="text-2xl font-bold text-slate-900">
-                        Cover Letter Nepal
-                    </h2>
-                </a>
+        <h2 class="text-3xl font-bold text-slate-900">
+            Cover Letter Nepal
+        </h2>
 
-                <p class="mt-5 max-w-lg leading-7 text-slate-600">
-                    Generate professional cover letters for .np domain registration
-                    in minutes. Preview your letter, download it as a PDF, or send
-                    it directly to your email — without creating an account.
-                </p>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+            Generate professional cover letters for .np domain registration in
+            minutes. Preview your letter, download it as a PDF, or send it
+            directly to your email—without creating an account.
+        </p>
 
+        <div class="mt-12">
 
-                <!-- Hosting Partner -->
-                <div class="mt-10">
+            <h3 class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                Our Hosting Partner
+            </h3>
 
-                    <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-900">
-                        Our Hosting Partner
-                    </h3>
+            <a href="https://bisup.com"
+               target="_blank"
+               class="mt-5 flex w-full max-w-md items-center gap-5 rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:border-blue-200 hover:bg-blue-50">
 
-                    <a href="https://bisup.com"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="mt-4 inline-flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 transition hover:border-blue-200 hover:bg-blue-50">
+                <img
+                    src="{% static 'img/bisup-logo.svg' %}"
+                    class="h-12 w-auto"
+                    alt="BISUP"
+                >
 
-                        <img
-                            src="{% static 'img/bisup-logo.svg' %}"
-                            alt="BISUP"
-                            class="h-10 w-auto"
-                        >
-
-                        <div>
-
-                            <h4 class="font-semibold text-slate-900">
-                                BISUP
-                            </h4>
-
-                            <p class="text-sm text-slate-500">
-                                Fast, Secure & Reliable Web Hosting
-                            </p>
-
-                        </div>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Right -->
-            <div class="grid grid-cols-2 gap-10 lg:justify-self-end">
-
-                <!-- Product -->
                 <div>
 
-                    <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-900">
-                        Product
-                    </h3>
+                    <h4 class="text-xl font-semibold text-slate-900">
+                        BISUP
+                    </h4>
 
-                    <ul class="mt-5 space-y-3">
-
-                        <li>
-                            <a href="#generator"
-                               class="text-slate-600 transition hover:text-blue-600">
-                                Generator
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#how-it-works"
-                               class="text-slate-600 transition hover:text-blue-600">
-                                How It Works
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#extensions"
-                               class="text-slate-600 transition hover:text-blue-600">
-                                Supported Extensions
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#faq"
-                               class="text-slate-600 transition hover:text-blue-600">
-                                FAQ
-                            </a>
-                        </li>
-
-                    </ul>
+                    <p class="mt-1 text-slate-500">
+                        Fast, Secure & Reliable Web Hosting
+                    </p>
 
                 </div>
 
-
-
-                <!-- Resources -->
-                <div>
-
-                    <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-900">
-                        Resources
-                    </h3>
-
-                    <ul class="mt-5 space-y-3">
-
-                        <li>
-                            <a href="https://register.com.np"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               class="text-slate-600 transition hover:text-blue-600">
-                                Official .NP Registry
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="https://bisup.com"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               class="text-slate-600 transition hover:text-blue-600">
-                                BISUP
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="https://bisup.com/contact"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               class="text-slate-600 transition hover:text-blue-600">
-                                Contact Support
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/privacy-policy/"
-                               class="text-slate-600 transition hover:text-blue-600">
-                                Privacy Policy
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
+            </a>
 
         </div>
 
+    </div>
+
+
+
+    <!-- RIGHT -->
+
+    <div class="grid grid-cols-2 gap-16 self-start">
+
+        <!-- Product -->
+        <div>
+
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900">
+                Product
+            </h3>
+
+            <ul class="mt-6 space-y-4">
+
+                <li><a href="#generator" class="text-slate-600 hover:text-blue-600">Generator</a></li>
+                <li><a href="#how-it-works" class="text-slate-600 hover:text-blue-600">How It Works</a></li>
+                <li><a href="#extensions" class="text-slate-600 hover:text-blue-600">Supported Extensions</a></li>
+                <li><a href="#faq" class="text-slate-600 hover:text-blue-600">FAQ</a></li>
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- Resources -->
+
+        <div>
+
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-900">
+                Resources
+            </h3>
+
+            <ul class="mt-6 space-y-4">
+
+                <li><a href="https://register.com.np" class="text-slate-600 hover:text-blue-600">Official .NP Registry</a></li>
+                <li><a href="https://bisup.com" class="text-slate-600 hover:text-blue-600">BISUP</a></li>
+                <li><a href="https://bisup.com/contact" class="text-slate-600 hover:text-blue-600">Contact Support</a></li>
+                <li><a href="/privacy-policy/" class="text-slate-600 hover:text-blue-600">Privacy Policy</a></li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
 
 
         <!-- Bottom -->
