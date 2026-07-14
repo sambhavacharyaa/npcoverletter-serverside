@@ -34,7 +34,6 @@ class PersonalDomainForm(forms.Form):
     widget=forms.TextInput(attrs={
 
         "class": input_class,
-
         "placeholder": "Enter your full name"
 
     })
@@ -43,6 +42,7 @@ class PersonalDomainForm(forms.Form):
 
     email = forms.EmailField(
         label="Email Address",
+        initial="contact@bisup.com",
         widget=forms.EmailInput(attrs={
             "class": input_class,
             "placeholder": "Enter your email"
@@ -79,6 +79,7 @@ class PersonalDomainForm(forms.Form):
     domain_name = forms.CharField(
         max_length=100,
         label="Domain Name",
+        initial="bisup.com.np",
         widget=forms.TextInput(attrs={
             "class": input_class,
             "placeholder": "example.com.np"
@@ -97,6 +98,7 @@ class PersonalDomainForm(forms.Form):
     ns1 = forms.CharField(
         max_length=100,
         label="Primary Name Server (NS1)",
+        initial="ns50.bisup.com",
         widget=forms.TextInput(attrs={
             "class": input_class,
             "placeholder": "ns1.example.com"
@@ -106,6 +108,7 @@ class PersonalDomainForm(forms.Form):
     ns2 = forms.CharField(
         max_length=100,
         label="Secondary Name Server (NS2)",
+        initial="ns51.bisup.com",
         widget=forms.TextInput(attrs={
             "class": input_class,
             "placeholder": "ns2.example.com"
@@ -118,6 +121,7 @@ class BusinessDomainForm(forms.Form):
     representative_name = forms.CharField(
         max_length=100,
         label="Representative Name",
+        initial="Sambhav Acharya",
         widget=forms.TextInput(attrs={
             "class": input_class,
             "placeholder": "Authorized representative name"
@@ -144,6 +148,7 @@ class BusinessDomainForm(forms.Form):
     company_name = forms.CharField(
         max_length=150,
         label="Company Name",
+        initial="BISUP Innovations Pvt. Ltd.",
         widget=forms.TextInput(attrs={
             "class": input_class,
             "placeholder": "Company name"
@@ -162,6 +167,7 @@ class BusinessDomainForm(forms.Form):
     domain_name = forms.CharField(
         max_length=100,
         label="Domain Name",
+        initial="bisup.com.np",
         widget=forms.TextInput(attrs={
             "class": input_class,
             "placeholder": "example.com.np"
@@ -170,6 +176,7 @@ class BusinessDomainForm(forms.Form):
 
     business_description = forms.CharField(
         label="Business Description",
+        initial="Hosting Provider",
         widget=forms.Textarea(attrs={
             "class": textarea_class,
             "placeholder": "Describe your business",
@@ -180,6 +187,7 @@ class BusinessDomainForm(forms.Form):
     ns1 = forms.CharField(
         max_length=100,
         label="Primary Name Server (NS1)",
+        initial="ns50.bisup.com",
         widget=forms.TextInput(attrs={
             "class": input_class,
             "placeholder": "ns1.example.com"
@@ -189,6 +197,7 @@ class BusinessDomainForm(forms.Form):
     ns2 = forms.CharField(
         max_length=100,
         label="Secondary Name Server (NS2)",
+        initial="ns51.bisup.com",
         widget=forms.TextInput(attrs={
             "class": input_class,
             "placeholder": "ns2.example.com"
