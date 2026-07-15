@@ -4,134 +4,155 @@
 {% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">{% endblock %}
 
 {% block main %}
-<section class="bg-white lg:min-h-screen lg:flex lg:items-center">
+<section id="generator" class="bg-slate-50 py-10">
 
-    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        <div class="grid items-center gap-12 lg:grid-cols-2">
+        <!-- Intro -->
+        <div class="mx-auto max-w-3xl text-center">
 
+            <div class="flex flex-wrap justify-center gap-2">
 
-            <!-- Content -->
-            <div class="max-w-xl text-left">
+                <span class="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
+                    ✓ Free
+                </span>
 
+                <span class="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700">
+                    ✓ No Account Required
+                </span>
 
-                <!-- Badges -->
-                <div class="flex flex-wrap gap-2">
+                <span class="rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-700">
+                    ✓ Instant PDF
+                </span>
 
-                    <span class="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-emerald-700">
+            </div>
 
-                        <svg
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="mr-1.5 h-4 w-4">
+            <h1 class="mt-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                .NP Domain Cover Letter Generator
+            </h1>
 
-                            <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <p class="mt-4 text-lg leading-8 text-slate-600">
+                Generate a professionally formatted cover letter for your
+                <strong>.np</strong> domain registration in less than a minute.
+                Preview it instantly, download it as a PDF, or send it directly
+                to your email.
+            </p>
 
-                        </svg>
-
-                        <span class="text-sm font-medium">
-                            Free
-                        </span>
-
-                    </span>
+        </div>
 
 
 
-                    <span class="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-amber-700">
+        <!-- Toggle -->
+        <div class="mt-10 flex justify-center">
 
-                        <svg
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="mr-1.5 h-4 w-4">
+            <button id="personal-btn"
+                    class="toggle-btn active cursor-pointer rounded-l-lg px-6 py-3 font-medium transition duration-200">
+                Personal Domain
+            </button>
 
-                            <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M8.25 9.75h4.875a2.625 2.625 0 010 5.25H12M8.25 9.75L10.5 7.5M8.25 9.75L10.5 12"/>
+            <button id="business-btn"
+                    class="toggle-btn cursor-pointer rounded-r-lg px-6 py-3 font-medium transition duration-200">
+                Business Domain
+            </button>
 
-                        </svg>
+        </div>
 
-                        <span class="text-sm font-medium">
-                            Instant PDF
-                        </span>
 
-                    </span>
+
+        <!-- Main Tool -->
+        <div class="mt-10 grid gap-8 xl:grid-cols-2">
+
+            <!-- Form -->
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+
+                <!-- Personal Form -->
+                <div id="personal-form">
+
+                    <h2 class="mb-6 text-xl font-semibold text-slate-900">
+                        Personal Domain Details
+                    </h2>
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="space-y-5">
+
+                            {% for field in personal_form %}
+
+                                <div>
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    {{ field.errors }}
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            name="personal_submit"
+                            class="mt-6 w-full rounded-lg bg-blue-600 py-3 font-medium text-white transition hover:bg-blue-700">
+
+                            Generate Personal Cover Letter
+
+                        </button>
+
+                    </form>
 
                 </div>
 
 
 
-                <!-- Heading -->
-                <h1 class="mt-6 text-4xl font-bold leading-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                <!-- Business Form -->
+                <div id="business-form" class="hidden">
 
-                     .np Domain
+                    <h2 class="mb-6 text-xl font-semibold text-slate-900">
+                        Business Domain Details
+                    </h2>
 
-                    <span class="text-blue-600">
-                        Cover Letter
-                    </span>
+                    <form method="POST">
 
-                    Generator
+                        {% csrf_token %}
 
-                </h1>
+                        <div class="space-y-5">
 
+                            {% for field in business_form %}
 
+                                <div>
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    {{ field.errors }}
+                                </div>
 
-                <!-- Description -->
-                <p class="mt-5 text-base leading-7 text-gray-700 sm:text-lg">
+                            {% endfor %}
 
-                    Create a Mercantile-compliant cover letter for your .com.np domain registration in minutes. No login required, no data stored — just fill in your details, preview, and download your PDF.
+                        </div>
 
-                </p>
+                        <button
+                            type="submit"
+                            name="business_submit"
+                            class="mt-6 w-full rounded-lg bg-blue-600 py-3 font-medium text-white transition hover:bg-blue-700">
 
+                            Generate Business Cover Letter
 
+                        </button>
 
-                <!-- Buttons -->
-                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-
-                    <a href="#generator"
-                       class="rounded-lg bg-blue-600 px-6 py-3 text-center font-medium text-white shadow-sm transition hover:bg-blue-700">
-
-                        Get Started
-
-                    </a>
-
-
-                    <a href="#how-it-works"
-                       class="rounded-lg border border-gray-200 px-6 py-3 text-center font-medium text-gray-700 transition hover:bg-gray-50">
-
-                        Learn More
-
-                    </a>
+                    </form>
 
                 </div>
 
-
             </div>
 
 
 
-            <!-- Image -->
-            <div class="flex justify-center">
+            <!-- Preview -->
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
 
-                <img
-                    alt="Generate .com.np cover letter"
-                    src="{% static 'img/hero.png' %}"
-                    class="w-64 object-contain sm:w-80 md:w-96 lg:w-full max-w-lg"
-                />
+                <!-- Your existing preview code -->
 
             </div>
-
 
         </div>
 
