@@ -75,11 +75,12 @@ class PersonalDomainForm(forms.Form):
 
                 "class": "w-full rounded-lg border border-gray-300 p-3",
 
-                "placeholder": "yourdomain"
+                "placeholder": "Your Domain"
 
             }
 
-        )
+        ),
+        initial="bisup"
 
     )
 
@@ -214,7 +215,7 @@ class BusinessDomainForm(forms.Form):
 
                 "class": "w-full rounded-lg border border-gray-300 p-3",
 
-                "placeholder": "bisup",
+                "placeholder": "Your Domain",
 
             }
             
