@@ -67,31 +67,72 @@ class PersonalDomainForm(forms.Form):
         })
     )
 
-    citizenship_number = forms.CharField(
-        max_length=50,
-        label="Citizenship Number",
-        widget=forms.TextInput(attrs={
-            "class": input_class,
-            "placeholder": "Enter citizenship number"
-        })
+    domain_name = forms.CharField(
+
+        widget=forms.TextInput(
+
+            attrs={
+
+                "class": "w-full rounded-lg border border-gray-300 p-3",
+
+                "placeholder": "yourdomain"
+
+            }
+
+        )
+
     )
 
-    domain_name = forms.CharField(
-        max_length=100,
-        label="Domain Name",
-        initial="bisup.com.np",
-        widget=forms.TextInput(attrs={
-            "class": input_class,
-            "placeholder": "example.com.np"
-        })
+    domain_tld = forms.ChoiceField(
+
+        choices=[
+
+            (".com.np", ".com.np"),
+
+            (".net.np", ".net.np"),
+
+            (".org.np", ".org.np"),
+
+            (".edu.np", ".edu.np"),
+
+            (".gov.np", ".gov.np"),
+            
+            (".mil.np", ".mil.np"),
+            
+            ('.name.np', '.name.np'),
+            
+            ('.biz.np', '.biz.np'),
+            
+            ('.pro.np', '.pro.np'),
+            
+            ('.coop.np', '.coop.np'),
+            
+            ('.travel.np', '.travel.np'),
+            
+            ('.info.np', '.info.np'),
+
+        ],
+
+        widget=forms.Select(
+
+            attrs={
+
+                "class": "rounded-lg border border-gray-300 p-3"
+
+            }
+
+        )
+
     )
 
     purpose = forms.CharField(
         label="Purpose of Domain",
+        max_length=400,
         widget=forms.Textarea(attrs={
             "class": textarea_class,
             "placeholder": "Explain the purpose of your domain",
-            "rows": 4
+            "rows": 4,
+            "maxlength": "400",
         })
     )
 
@@ -154,33 +195,72 @@ class BusinessDomainForm(forms.Form):
             "placeholder": "Company name"
         })
     )
+    address = forms.CharField(
+    label="Address",
+    widget=forms.Textarea(attrs={
+        "class": textarea_class,
+        "placeholder": "Enter your address",
+        "rows": 3
+    })
+)
 
-    company_registration_number = forms.CharField(
-        max_length=100,
-        label="Company Registration Number",
-        widget=forms.TextInput(attrs={
-            "class": input_class,
-            "placeholder": "Registration number"
-        })
-    )
+
 
     domain_name = forms.CharField(
-        max_length=100,
-        label="Domain Name",
-        initial="bisup.com.np",
-        widget=forms.TextInput(attrs={
-            "class": input_class,
-            "placeholder": "example.com.np"
-        })
+
+        widget=forms.TextInput(
+
+            attrs={
+
+                "class": "w-full rounded-lg border border-gray-300 p-3",
+
+                "placeholder": "bisup",
+
+            }
+            
+
+        ),
+        initial="bisup"
+
+    )
+
+    domain_tld = forms.ChoiceField(
+
+        choices=[
+
+            (".com.np", ".com.np"),
+
+            (".np", ".np"),
+
+            (".org.np", ".org.np"),
+
+            (".edu.np", ".edu.np"),
+
+            (".gov.np", ".gov.np"),
+
+        ],
+
+        widget=forms.Select(
+
+            attrs={
+
+                "class": "rounded-lg border border-gray-300 p-3"
+
+            }
+
+        )
+
     )
 
     business_description = forms.CharField(
         label="Business Description",
         initial="Hosting Provider",
+        max_length=400,
         widget=forms.Textarea(attrs={
             "class": textarea_class,
             "placeholder": "Describe your business",
-            "rows": 4
+            "rows": 4,
+            "maxlength": "400",
         })
     )
 
@@ -203,3 +283,12 @@ class BusinessDomainForm(forms.Form):
             "placeholder": "ns2.example.com"
         })
     )
+    business_stamp = forms.ImageField(
+    label="Business Stamp",
+    required=False,
+    widget=forms.ClearableFileInput(attrs={
+        "class": input_class,
+        "accept": "image/*",
+        "id": "id_business-business_stamp"
+    })
+)

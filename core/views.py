@@ -7,13 +7,14 @@ from django.conf import settings
 from weasyprint import HTML
 import os
 from .forms import PersonalDomainForm, BusinessDomainForm
-from .utils import generate_personal_letter, generate_business_letter
+from .utils import generate_personal_letter, generate_business_letter, render_letter_to_jpeg
+from django.shortcuts import render
 
 
 
 
 
-def create_pdf(letter):
+def create_pdf(letter, is_business=False, company_name="", company_address=""):
 
     # Absolute path to the font file
 
@@ -38,6 +39,9 @@ def create_pdf(letter):
         {
 
             "letter": letter,
+            'is_business': is_business,
+            'company_name': company_name,
+            'company_address': company_address,
 
             "font_path": f"file://{font_path}",  # WeasyPrint requires file:// URLs
 
@@ -52,111 +56,72 @@ def create_pdf(letter):
 
 
 def home(request):
+    personal_form = PersonalDomainForm(prefix='personal')
+    business_form = BusinessDomainForm(prefix='business')
+    letter = None
+    selected_tab = 'personal'
 
-    personal_form = PersonalDomainForm()
-    business_form = BusinessDomainForm()
-
-
-    if request.method == "POST":
-
-
-        # Personal form submission
-        if "personal_submit" in request.POST:
-
-            personal_form = PersonalDomainForm(request.POST)
-
+    if request.method == 'POST':
+        if 'personal_submit' in request.POST:
+            selected_tab = 'personal'
+            personal_form = PersonalDomainForm(request.POST, prefix='personal')
 
             if personal_form.is_valid():
-
                 data = personal_form.cleaned_data
 
-                # Generate letter
+                # Combine domain name and selected TLD
+                data['domain_name'] = f"{data['domain_name']}{data['domain_tld']}"
+                print(data["domain_name"])
                 letter = generate_personal_letter(data)
-
-
-                # Save data for PDF and email
                 request.session["pdf_context"] = {
 
-                    "letter": letter,
+                "letter": letter,
+                "is_business": False,
+                "name": data["full_name"],
 
-                    "name": data["full_name"],
+                "domain_name": data["domain_name"],
 
-                    "domain_name": data["domain_name"],
+            }
 
-                    "email": data["email"],
-                }
-
-
-                return render(
-                    request,
-                    "home.html",
-                    {
-                        "letter": letter,
-                        "personal_form": personal_form,
-                        "business_form": business_form,
-                        "selected_form": "personal",
-                    }
-                )
-
-
-
-        # Business form submission
-        elif "business_submit" in request.POST:
-
-
-            business_form = BusinessDomainForm(request.POST)
-
+        elif 'business_submit' in request.POST:
+            selected_tab = 'business'
+            business_form = BusinessDomainForm(
+            request.POST,
+            request.FILES,
+            prefix='business'
+        )
 
             if business_form.is_valid():
-
                 data = business_form.cleaned_data
 
+                # Combine domain name and selected TLD
+                data['domain_name'] = f"{data['domain_name']}{data['domain_tld']}"
 
-                # Generate letter
                 letter = generate_business_letter(data)
-
-
-                # Save data for PDF and email
                 request.session["pdf_context"] = {
 
-                    "letter": letter,
+                "letter": letter,
+                "is_business": True,
+                "company_name": data["company_name"],
+                "company_address": data["address"],
+                "name": data["representative_name"],
 
-                    "name": data["representative_name"],
+                "domain_name": data["domain_name"],
 
-                    "domain_name": data["domain_name"],
+            }
 
-                    "email": data["representative_email"],
-                }
-
-
-                return render(
-                    request,
-                    "home.html",
-                    {
-                        "letter": letter,
-                        "personal_form": personal_form,
-                        "business_form": business_form,
-                        "selected_form": "business",
-                    }
-                )
-
-
-    return render(
-        request,
-        "home.html",
-        {
-            "personal_form": personal_form,
-            "business_form": business_form,
-        }
-    )
-
+    return render(request, 'home.html', {
+        'personal_form': personal_form,
+        'business_form': business_form,
+        'letter': letter,
+        'selected_tab': selected_tab,
+    })
 
 
 def download_pdf(request):
 
     # Get generated letter
     pdf_context = request.session.get("pdf_context")
-
 
     if not pdf_context:
 
@@ -167,7 +132,10 @@ def download_pdf(request):
 
     # Generate PDF
     pdf = create_pdf(
-        pdf_context["letter"]
+        letter=pdf_context["letter"],
+        is_business=pdf_context.get("is_business", False),
+        company_name=pdf_context.get("company_name", ""),
+        company_address=pdf_context.get("company_address", ""),
     )
 
 
@@ -262,3 +230,30 @@ Thank you.
 
 
     return redirect("/")
+
+def download_jpeg(request):
+    pdf_context = request.session.get("pdf_context")
+
+    if not pdf_context:
+        return HttpResponse(
+            "No generated letter found.",
+            status=400
+        )
+
+    jpeg_bytes = render_letter_to_jpeg(
+        letter_html=pdf_context["letter"],
+        is_business=pdf_context.get("is_business", False),
+        company_name=pdf_context.get("company_name", ""),
+        company_address=pdf_context.get("company_address", ""),
+    )
+
+    response = HttpResponse(
+        jpeg_bytes,
+        content_type="image/jpeg",
+    )
+
+    response["Content-Disposition"] = (
+        'attachment; filename="cover_letter.jpg"'
+    )
+
+    return response

@@ -78,6 +78,13 @@
     .signature {
         margin-top: 40px;
     }
+    .stamp {
+    margin-top: 30px;
+}
+
+.stamp img {
+    max-width: 120px;
+}
 
 </style>
 
@@ -86,14 +93,12 @@
 
 
     <!-- Official letter heading -->
-    <div class="letterhead">
-
-        <h1>
-            Request for .np Domain Registration
-        </h1>
-
-    </div>
-
+   {% if is_business %}
+<div class="letterhead">
+    <h1>{{ company_name }}</h1>
+    <h3>{{ company_address }}</h3>
+</div>
+{% endif %}
 
     <!-- Generated cover letter -->
     <div class="letter-content">

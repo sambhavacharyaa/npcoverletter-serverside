@@ -46,9 +46,7 @@
 
         <!-- Logo -->
         <a href="/" class="flex items-center">
-            <span class="text-xl font-bold text-slate-900">
-                Cover Letter Nepal
-            </span>
+            <img src="{% static "img/logo.png" %}" alt="Cover Letter Nepal Logo" class="h-6 md:h-18 w-auto object-contain">
         </a>
 
 
@@ -160,24 +158,14 @@
             <div class="md:col-span-2">
 
                 <a href="/" class="inline-flex items-center gap-2">
-
-                    <span class="text-2xl font-bold text-slate-900">
-                       Cover Letter Nepal
-                    </span>
+                    <img src="{% static "img/logo.png" %}" alt="Cover Letter Nepal Logo" class="h-6 md:h-12 w-auto object-contain">
+                    
 
                 </a>
 
 
                 <!-- Badge -->
-                <div class="mt-4 inline-flex items-center gap-2 rounded-full border border-orange-100 bg-orange-50 px-4 py-1.5">
-
-                    <span class="h-2 w-2 rounded-full bg-orange-600"></span>
-
-                    <span class="text-sm font-medium text-orange-700">
-                        Backed by BISUP
-                    </span>
-
-                </div>
+           
 
 
                 <p class="mt-5 max-w-sm text-slate-600 leading-7">
@@ -241,11 +229,7 @@
 
                 <ul class="mt-5 space-y-3 text-slate-600">
 
-                    <li>
-                        <a href="https://bisup.com" class="hover:text-blue-600">
-                            BISUP
-                        </a>
-                    </li>
+                 
 
                     <li>
                         <a href="https://register.com.np" target="_blank" class="hover:text-blue-600">
@@ -275,15 +259,35 @@
 
 
         <!-- Bottom -->
-        <div class="mt-12 flex flex-col gap-4 border-t border-slate-200 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+<!-- Bottom -->
+<div class="mt-12 flex flex-col gap-4 border-t border-slate-200 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+
+    <!-- Copyright -->
+    <p>
+        © 2026 NP Cover Letter. All rights reserved.
+    </p>
 
 
-            <p>
-                © 2026 NP Cover Letter. All rights reserved.
-            </p>
+    <!-- Hosting Partner -->
+    <div class="flex items-center gap-3">
 
+        <span class="text-slate-500">
+            Our hosting partner:
+        </span>
 
-        </div>
+        <a href="https://bisup.com" target="_blank" class="inline-flex items-center">
+
+            <img 
+                src="{% static 'img/bisup-logo.avif' %}"
+                alt="BISUP Logo"
+                class="h-10 w-auto object-contain"
+            >
+
+        </a>
+
+    </div>
+
+</div>
 
 
     </div>

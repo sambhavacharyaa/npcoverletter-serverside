@@ -11,6 +11,8 @@ urlpatterns = [
     path(
     "send-email/",
     views.send_pdf_email,
-    name="send_pdf_email"
+    name="send_pdf_email",
+    
 ),
+    path('download/jpeg/', views.download_jpeg, name='download_jpeg'),
 ]

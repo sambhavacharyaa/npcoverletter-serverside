@@ -52,3 +52,24 @@
 html {
     scroll-behavior: smooth;
 }
+.letterhead {
+    text-align: center;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 20px;
+    margin-bottom: 35px;
+}
+
+.letterhead h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #111827;
+}
+
+.stamp {
+    margin-top: 30px;
+}
+
+.stamp img {
+    max-width: 120px;
+}
