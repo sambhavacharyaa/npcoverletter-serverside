@@ -228,15 +228,29 @@ class BusinessDomainForm(forms.Form):
 
         choices=[
 
-            (".com.np", ".com.np"),
+             (".com.np", ".com.np"),
 
-            (".np", ".np"),
+            (".net.np", ".net.np"),
 
             (".org.np", ".org.np"),
 
             (".edu.np", ".edu.np"),
 
             (".gov.np", ".gov.np"),
+            
+            (".mil.np", ".mil.np"),
+            
+            ('.name.np', '.name.np'),
+            
+            ('.biz.np', '.biz.np'),
+            
+            ('.pro.np', '.pro.np'),
+            
+            ('.coop.np', '.coop.np'),
+            
+            ('.travel.np', '.travel.np'),
+            
+            ('.info.np', '.info.np'),
 
         ],
 
