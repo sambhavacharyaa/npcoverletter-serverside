@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const purpose = val('id_personal-purpose') || '________';
         const ns1 = val('id_personal-ns1') || '________';
         const ns2 = val('id_personal-ns2') || '________';
-
+        const email = val('id_personal-email') || '________';
+        const phone = val('id_personal-phone') || '________';
 
         return `
 
@@ -112,6 +113,9 @@ document.addEventListener('DOMContentLoaded', function () {
 <p>
     Sincerely,<br><br>
     <strong>${full_name}</strong>
+    <br>
+    Email: ${email}<br>
+    Phone: ${phone}
 </p>
 
 `;
@@ -129,8 +133,8 @@ function renderBusinessLetter(stamp = "") {
     const business_description = val('id_business-business_description') || '________';
     const ns1 = val('id_business-ns1') || '________';
     const ns2 = val('id_business-ns2') || '________';
-
-
+    const representative_email = val('id_business-representative_email') || '________';
+    const representative_phone = val('id_business-representative_phone') || '________';
     return `
 
 <!-- Business Letterhead -->
@@ -226,6 +230,9 @@ function renderBusinessLetter(stamp = "") {
     <strong>${representative_name}</strong><br>
 
     ${company_name}
+    <br>
+    Email: ${representative_email}<br>
+    Phone: ${representative_phone}
 
 </p>
 

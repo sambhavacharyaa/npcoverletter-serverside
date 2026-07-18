@@ -9,8 +9,7 @@ import os
 from .forms import PersonalDomainForm, BusinessDomainForm
 from .utils import generate_personal_letter, generate_business_letter, render_letter_to_jpeg
 from django.shortcuts import render
-
-
+from .models import CoverLetterSubmission
 
 
 
@@ -55,6 +54,8 @@ def create_pdf(letter, is_business=False, company_name="", company_address=""):
 
 
 
+from .models import CoverLetterSubmission
+
 def home(request):
     personal_form = PersonalDomainForm(prefix='personal')
     business_form = BusinessDomainForm(prefix='business')
@@ -65,50 +66,36 @@ def home(request):
         if 'personal_submit' in request.POST:
             selected_tab = 'personal'
             personal_form = PersonalDomainForm(request.POST, prefix='personal')
-
             if personal_form.is_valid():
                 data = personal_form.cleaned_data
-
-                # Combine domain name and selected TLD
-                data['domain_name'] = f"{data['domain_name']}{data['domain_tld']}"
-                print(data["domain_name"])
                 letter = generate_personal_letter(data)
-                request.session["pdf_context"] = {
+                request.session['letter_html'] = letter
 
-                "letter": letter,
-                "is_business": False,
-                "name": data["full_name"],
-
-                "domain_name": data["domain_name"],
-
-            }
+                CoverLetterSubmission.objects.create(
+                    submission_type=CoverLetterSubmission.PERSONAL,
+                    name=data['full_name'],
+                    email=data['email'],
+                    domain_name=data['domain_name'],
+                    domain_tld=data['domain_tld'],
+                    phone = data["phone"]
+                )
 
         elif 'business_submit' in request.POST:
             selected_tab = 'business'
-            business_form = BusinessDomainForm(
-            request.POST,
-            request.FILES,
-            prefix='business'
-        )
-
+            business_form = BusinessDomainForm(request.POST, request.FILES, prefix='business')
             if business_form.is_valid():
                 data = business_form.cleaned_data
-
-                # Combine domain name and selected TLD
-                data['domain_name'] = f"{data['domain_name']}{data['domain_tld']}"
-
                 letter = generate_business_letter(data)
-                request.session["pdf_context"] = {
+                request.session['letter_html'] = letter
 
-                "letter": letter,
-                "is_business": True,
-                "company_name": data["company_name"],
-                "company_address": data["address"],
-                "name": data["representative_name"],
-
-                "domain_name": data["domain_name"],
-
-            }
+                CoverLetterSubmission.objects.create(
+                    submission_type=CoverLetterSubmission.BUSINESS,
+                    name=data['company_name'],
+                    email=data['representative_email'],
+                    domain_name=data['domain_name'],
+                    domain_tld=data['domain_tld'],
+                    phone=data['phone']
+                )
 
     return render(request, 'home.html', {
         'personal_form': personal_form,

@@ -8,10 +8,11 @@ def generate_personal_letter(data):
     full_name = data["full_name"]
     address = data["address"]
     domain_name = data["domain_name"]
+    email = data["email"]
     purpose = data["purpose"]
     ns1 = data["ns1"]
     ns2 = data["ns2"]
-
+    phone = data["phone"]
     letter = f"""
 <p>
     To,<br>
@@ -56,8 +57,12 @@ def generate_personal_letter(data):
 </p>
 
 <p>
-    Sincerely,<br><br>
+    Sincerely,<br>
     <strong>{full_name}</strong>
+    <br>
+    Phone: {phone}
+    <br>
+    Email: {email}
 </p>
 """
 
@@ -72,7 +77,8 @@ def generate_business_letter(data):
     business_stamp = data.get("business_stamp")
     ns1 = data["ns1"]
     ns2 = data["ns2"]
-    
+    representative_email = data["representative_email"]
+    representative_phone = data["representative_phone"]
     stamp_html = ""
 
     if business_stamp:
@@ -141,6 +147,9 @@ def generate_business_letter(data):
     Sincerely,<br><br>
     <strong>{representative_name}</strong><br>
     {company_name}
+    <br>
+    Email: {representative_email}<br>
+    Phone: {representative_phone}
 </p>
 {stamp_html}
 """
